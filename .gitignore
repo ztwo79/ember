@@ -16,5 +16,9 @@
 npm-debug.log
 testem.log
 
+# compass cache
+app/styles/compass/.sass-cache
+app/styles/.sass-cache
+
 #PHPStrom
 .idea
