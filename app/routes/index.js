@@ -57,52 +57,25 @@ export default Ember.Route.extend({
 	 	    	title: "Fewer Moving Parts",
 			   	body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae reiciendis iste debitis doloribus, quam dolorem quasi aperiam architecto laudantium veniam dolor nam, qui exercitationem dolorum veritatis nobis est alias totam repudiandae error fugit voluptate eaque, delectus nesciunt. Consectetur consequuntur ea officiis, neque eum animi laboriosam maiores nisi vitae necessitatibus vel ipsum accusamus, ducimus optio. Vel omnis voluptatibus esse, magni quam consequuntur delectus, eum est praesentium temporibus, repellat fuga. Natus repellendus dicta ullam dolore, ex corporis, itaque sit temporibus consectetur distinctio, at unde dolores, magnam amet molestiae. Nesciunt, alias dolore. Ab debitis nostrum velit! Vero, porro ullam nobis ex, officia delectus cum consequatur dolore quas laboriosam veritatis deserunt. Ipsa at rem quidem sit, possimus voluptatibus beatae pariatur aperiam. Vitae laboriosam voluptate amet assumenda, aperiam ad repellat, animi quod iste porro, optio aliquid. Ex eligendi mollitia aut fuga deleniti vel quisquam porro pariatur repellendus natus quia soluta dolor, dignissimos cumque modi ad, architecto sequi ratione perspiciatis harum exercitationem dolorem provident. Amet blanditiis illum dolores culpa maxime doloremque sit quo, placeat cupiditate numquam! Error nisi enim explicabo nam veniam modi deserunt ipsam sint hic officiis animi, aut quia fuga quaerat neque mollitia repellat eaque totam ex corporis et quisquam nemo architecto maxime. Neque."
 			});
-			
 
     	}
-  	},
-  	setupController: function(controller) {
-  		var posts = this.store.peekAll("post");
-      	// alert(posts.get("length"));
-      	// Ember.Logger.log(posts.get("length"));
+		return this.store.peekAll("post");
+  	} ,
+  	actions:{
+		delete:function(post){
+			// Ember.Logger.log(post.get("id")); 
+			this.store.find('post', post.get("id")).then(function (post) {
+				post.deleteRecord();
+				// post.get('isDeleted'); // => true
+				// post.save(); // => DELETE to /posts/1
+			  	// post.destroyRecord(); // => DELETE to /posts/2
+			});
+		},
+		edit:function(post){
+			this.transitionTo("edit-post" , post.get("id"));
+		}
 
-  	// 	this.store.push('post', {
-	  //     	id: 1,
-			// title: "first title",
-	  //     	body: " body one  : Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt id, a esse officiis distinctio maxime quidem iure temporibus ad laboriosam pariatur repudiandae necessitatibus atque! Qui molestias perspiciatis tempora, eos quisquam!"
-	  //   });
-	    // this.store.push('post', {
-	    //   	id: 2,
-	    //   	title: "second title",
-		   // 	body: " body two : Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus illum temporibus nihil, rerum enim vitae, facilis aut quod beatae ullam debitis aliquam. Explicabo quasi, sed omnis tempore inventore unde, quibusdam!"
-	    // });
-	    // this.store.push('post', {
-	    //   	id: 3,
-	    //   	title: "Fewer Moving Parts",
-	    //   	body: "David Bazan"
-	    // });
-		posts = this.store.peekAll("post");	
-  		
-   
-  		
-      	// this.store.find('post', 1).then(function (post) {
-			// post.set("title", "haha");
-			// post.save();
-			// post.deleteRecord();
-			// post.get('isDeleted'); // => true
-			// post.save(); // => DELETE to /posts/1
-		  	// post.destroyRecord(); // => DELETE to /posts/2
-		// });
- 		// var test = store.find('post', 1).then(function (post) {
-		// });
-  		// model = test;
-  		
-      	// Ember.Logger.log(posts.length);
-
-   		controller.set('posts', posts);
-		// set to another controller
-   		// this.controllerFor('topPost').set('model', model);
-  	},
+	},
   	// set template
   	renderTemplate: function() {
     	// var controller = this.controllerFor('favoritePost');
