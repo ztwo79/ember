@@ -7,6 +7,6 @@
     	<label for="exampleInputPassword1">body</label>
     	{{textarea class="form-control" value=post.body name="body" rows="5" id="body"  }}
   	</div>
-  	<button {{action 'create' post}} class="btn btn-default">create</button>
+  	<button {{action 'save' post }} class="btn btn-default">{{save_btn_name}}</button>
 </form>
 {{yield}}
