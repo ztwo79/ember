@@ -52,7 +52,7 @@ export default Ember.Route.extend({
 			this.store.find('post', post.get("id")).then(function (post) {
 				post.deleteRecord();
 				// post.get('isDeleted'); // => true
-				// post.save(); // => DELETE to /posts/1
+				post.save(); // => DELETE to /posts/1
 			  	// post.destroyRecord(); // => DELETE to /posts/2
 			});
 		},
