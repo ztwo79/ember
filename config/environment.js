@@ -12,6 +12,19 @@ module.exports = function(environment) {
         // e.g. 'with-controller': true
       }
     },
+    // set content security policy
+    contentSecurityPolicy:{
+    'default-src': "'none'",
+    // Allow scripts from list
+    'script-src': "'self'  http://127.0.0.1:35729", 
+    // Allow fonts to be loaded from http://fonts.gstatic.com
+    'font-src': "'self' http://fonts.gstatic.com", 
+    // Allow data (ajax/websocket) from list
+    'connect-src': "'self' http://127.0.0.1 http://app ws://127.0.0.1:35729 ", 
+    'img-src': "'self'",
+    'style-src': "'self' 'unsafe-inline' http://fonts.googleapis.com", // Allow inline styles and loaded CSS from http://fonts.googleapis.com 
+    'media-src': "'self'"
+  },
 
     APP: {
       // Here you can pass flags/options to your application instance
