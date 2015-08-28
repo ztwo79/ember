@@ -1,14 +1,18 @@
 
 
 <h1>index page </h1>
+
+{{my-typeahead }}
+
 	
+
  {{#each model as |post|}}
     <article>
 	    <h4>
 	        <span>{{post.id}}.{{post.title}} </span>
 	    	<button type="button" {{action 'edit' post}} class="btn btn-primary">edit</button>
 	    	<button type="button" {{action 'delete' post}} class="btn btn-danger">delete</button>
-	    </h4> 
+	    </h4>
 	 	<p>{{post.body}}</p>
     </article>
   {{/each}}

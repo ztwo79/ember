@@ -1,0 +1,37 @@
+.typeahead{
+	position: relative;
+	
+	width: 260px;
+}
+.typeahead input{
+	width: 100%;
+}
+
+.typeahead__dropdown{
+	display: block;
+	position: absolute;
+	width: 100%;
+	background-color: white;
+	border:solid 1px #CCCCCC;
+}
+.typeahead__dropdown .media{
+	margin-top: 0;
+}
+.typeahead__searchbox{
+	height: 34px;
+}
+
+.typeahead__dropdownItem{
+	cursor: pointer;
+	border-top:solid 1px #CCCCCC;
+}
+.typeahead__dropdownItem:hover{
+	background: #B3B3B3;
+}
+.typeahead__img{
+	/* 35px */
+	width: 2.5em;
+}
+.typeahead__dropdownItem:first-child{
+	border-top:solid 0px;
+}

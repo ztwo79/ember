@@ -1,0 +1,20 @@
+<div class="typeahead">
+	{{input action="typing" on="key-up" placeholder="type something" valueBinding="searchWord" class="typeahead__searchbox"}}
+	
+	{{#if suggestItems}}
+		<div class="typeahead__dropdown ">
+			{{#each suggestItems as |suggestItem|}}
+			  	<div class="media typeahead__dropdownItem" {{action "pickItem" suggestItem}}>
+					<div class="media-left media-middle">
+						<img src="assets/img/{{suggestItem.icon}}" class="img-circle typeahead__img" >
+					</div>
+					<div class="media-body media-middle">
+						<h4 class="media-heading">{{suggestItem.name}}</h4>
+					</div>
+				</div>
+			{{/each}}
+			
+		</div>
+	{{/if}}
+</div>
+
