@@ -1,10 +1,11 @@
 .typeahead{
+	border: solid 1px #CCCCCC;
 	position: relative;
 	
 	width: 260px;
 }
-.typeahead input{
-	width: 100%;
+.typeahead .glyphicon-remove{
+	cursor: pointer;
 }
 
 .typeahead__dropdown{
@@ -17,7 +18,10 @@
 .typeahead__dropdown .media{
 	margin-top: 0;
 }
+/* search bar */
 .typeahead__searchbox{
+	border:0px;
+	width: 100%;
 	height: 34px;
 }
 
@@ -26,6 +30,16 @@
 	border-top:solid 1px #CCCCCC;
 }
 .typeahead__dropdownItem:hover{
+	background: #B3B3B3;
+}
+/*selected item */
+.typeahead__selectItem{
+	display: inline-block;
+	padding: 2px;
+	margin: 2px;
+	border: solid 1px #CCCCCC;
+}
+.typeahead__selectItem:hover{
 	background: #B3B3B3;
 }
 .typeahead__img{

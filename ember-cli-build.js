@@ -7,6 +7,10 @@ module.exports = function(defaults) {
   });
   app.import('bower_components/bootstrap/dist/css/bootstrap.min.css');
   app.import('bower_components/bootstrap/dist/js/bootstrap.min.js');
+  // import bootstrap icon
+  app.import('bower_components/bootstrap/fonts/glyphicons-halflings-regular.woff',{
+    destDir: 'fonts'  
+  });
   app.import('app/styles/compass/stylesheets/screen.css');
 
   // Use `app.import` to add additional libraries to the generated
