@@ -6,31 +6,14 @@ export default Ember.Component.extend({
 	selecedItems:[],
   	actions:{
 		typing:function(){
-			// put search word into suggestion 
-			// var suggestItems = this.get("suggestItems");
-			// set some item
-			if(this.get("searchWord").length>0){
-				this.set("suggestItems",[
-					{
-						icon:"my-gf.jpg",
-						name:"my girlfriend"		
-					},
-					{
-						icon:"me.jpg",
-						name:"wei-ming"		
-					},
-				]);
-			}else{
-				// find nothing
-				this.set("suggestItems",[]);
-			}
-			return true;
+      		// send this typeahead to action
+      		this.sendAction('typing' , this);
 		},
 		// select item
 		selectItem:function(suggestItem){
-			// push item into selected items
 			this.get("selecedItems").pushObject(suggestItem);
-			this.set("suggestItems",[]);
+      		this.set("suggestItems",[]);
+			this.set("searchWord","");
 		},
 		// remove seleced item
 		removeSelectedItem:function(selecedItem){

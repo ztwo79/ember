@@ -1,7 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-	
 	model: function() {
    //  	if(posts.get("length")===0){
 			// /**
@@ -48,8 +47,9 @@ export default Ember.Route.extend({
   	} ,
   	actions:{
 		delete:function(post){
-			// Ember.Logger.log(post.get("id")); 
-			this.store.find('post', post.get("id")).then(function (post) {
+			// Ember.Logger.log(post.get("id"));
+			// this.store.find('post', post.get("id")).then(function (post) {
+			this.store.find('post', post.get("id")).then((post)=>{ 
 				post.deleteRecord();
 				// post.get('isDeleted'); // => true
 				post.save(); // => DELETE to /posts/1
@@ -58,8 +58,15 @@ export default Ember.Route.extend({
 		},
 		edit:function(post){
 			this.transitionTo("edit-post" , post.get("id"));
-		}
+		},
+	    // typing:function(searchWord, suggestItems){
+	    typing:function(typeahead){
+	    	// fetch user 
+	    	var users = this.store.findAll("user");
+	    	// set user into suggest items
+	    	typeahead.set("suggestItems" , users);
 
+	    }
 	},
   	// set template
   	renderTemplate: function() {

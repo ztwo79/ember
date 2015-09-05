@@ -1,6 +1,6 @@
 <div class="typeahead">
+	{{!-- show select item --}}
 	{{#if selecedItems}}
-		
 		{{#each selecedItems as |selecedItem|}}
 			<span class="typeahead__selectItem">
 				<span class="typeahead__selectItemName">{{selecedItem.name}}</span>
@@ -8,10 +8,9 @@
 			</span>
 		{{/each}}
 	{{/if}}
-	
 
-	{{input action="typing" on="key-up" placeholder="type something" valueBinding="searchWord" class="typeahead__searchbox"}}
-	
+	{{input action="typing" on="key-up" placeholder="type something here" valueBinding="searchWord" class="typeahead__searchbox"}}
+	{{!-- show suggested item --}}
 	{{#if suggestItems}}
 		<div class="typeahead__dropdown ">
 			{{#each suggestItems as |suggestItem|}}
@@ -24,7 +23,7 @@
 					</div>
 				</div>
 			{{/each}}
-			
+
 		</div>
 	{{/if}}
 </div>
