@@ -59,13 +59,21 @@ export default Ember.Route.extend({
 		edit:function(post){
 			this.transitionTo("edit-post" , post.get("id"));
 		},
-	    // typing:function(searchWord, suggestItems){
+	    // type key word for user
 	    typing:function(typeahead){
-	    	// fetch user 
-	    	var users = this.store.findAll("user");
-	    	// set user into suggest items
+	    	// fetch users
+	    	this.store.query("user" , {keyWord:typeahead.get("searchWord")});
+	    	// get select item id
+	    	var selecedItemId = typeahead.get("selecedItems").getEach("id")
+	    	// filter selected item
+	    	var users = this.store.filter('user', function(user) {
+			   	// have not selceted yet
+			   	if(selecedItemId.indexOf(user.get("id"))===-1){
+			   		return true; 
+			   	}
+			});
+	    	// set selected item
 	    	typeahead.set("suggestItems" , users);
-
 	    }
 	},
   	// set template
