@@ -62,18 +62,26 @@ export default Ember.Route.extend({
 	    // type key word for user
 	    typing:function(typeahead){
 	    	// fetch users
-	    	this.store.query("user" , {keyWord:typeahead.get("searchWord")});
-	    	// get select item id
-	    	var selecedItemId = typeahead.get("selecedItems").getEach("id")
-	    	// filter selected item
-	    	var users = this.store.filter('user', function(user) {
-			   	// have not selceted yet
-			   	if(selecedItemId.indexOf(user.get("id"))===-1){
-			   		return true; 
-			   	}
-			});
-	    	// set selected item
-	    	typeahead.set("suggestItems" , users);
+    		var users=[];
+	    	// get selected items
+	    	var selecedItemId = typeahead.get("selecedItems").getEach("id");
+	    	// if search word is not empty
+	    	if(typeahead.get("searchWord").length>0){
+		    	// search users for keyword 
+		    	this.store.query("user" , {keyWord:typeahead.get("searchWord")}).then(function(userList){
+		    		// filter selected item
+		    		users = userList.filter(function(user){
+		    			if(selecedItemId.indexOf(user.get("id"))===-1){
+				   			return true; 
+				  	 	}
+		    		});
+		    		// put users into suggest items
+		    		typeahead.set("suggestItems" , users);
+		    	});
+	    	}else{
+	    		// set suggest items empty
+	    		typeahead.set("suggestItems" , []);
+	    	}
 	    }
 	},
   	// set template
