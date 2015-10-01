@@ -12,7 +12,7 @@
 	{{input action="typing" on="key-up" placeholder="type something here" valueBinding="searchWord" class="typeahead__searchbox"}}
 	{{!-- show suggested item --}}
 	{{#if suggestItems}}
-		<div class="typeahead__dropdown ">
+		<div {{action "notSelecting" on="mouseLeave"}} class="typeahead__dropdown "  {{action "selecting" on="mouseMove"}} >
 			{{#each suggestItems as |suggestItem|}}
 			  	<div class="media typeahead__dropdownItem" {{action "selectItem" suggestItem}}>
 					<div class="media-left media-middle">
@@ -23,7 +23,6 @@
 					</div>
 				</div>
 			{{/each}}
-
 		</div>
 	{{/if}}
 </div>
